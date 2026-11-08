@@ -1,0 +1,23 @@
+{
+  "name": "p4-mcp-security-assessment",
+  "version": "1.0.0",
+  "description": "Project 4 - MCP Server Security Assessment and Exploitation. A deliberately vulnerable sample MCP server plus inventory and exploitation clients used for a lab pentest.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "server:stdio": "node mcp_server/server.js --transport=stdio",
+    "server:http": "node mcp_server/server.js --transport=http",
+    "inventory": "node client/inventory.js",
+    "attack1": "node client/attack1_tool_injection.js",
+    "attack2": "node client/attack2_resource_poisoning.js",
+    "attack3": "node client/attack3_capability_chaining.js",
+    "burp": "node client/capture_http_evidence.js",
+    "diagram": "node diagrams/build_diagram.js",
+    "all": "node client/run_all.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "express": "^4.21.2",
+    "zod": "^3.23.8"
+  }
+}

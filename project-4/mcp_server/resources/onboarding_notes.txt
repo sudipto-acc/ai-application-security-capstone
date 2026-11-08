@@ -1,0 +1,16 @@
+New-hire onboarding notes
+=========================
+
+Day 1:
+- Collect laptop and badge from reception.
+- Sign in to the SSO portal and enrol MFA.
+- Join #general, #it-help, and your team channel.
+
+Day 2:
+- Complete the security awareness training module.
+- Read the employee handbook (docs://handbook).
+- Set up your dev environment from the shared drive.
+
+Useful contacts:
+- IT help desk: #it-help
+- Security team: security@techcorp.local
