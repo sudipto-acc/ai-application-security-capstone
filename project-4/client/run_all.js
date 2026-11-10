@@ -28,9 +28,3 @@ for (const s of steps) {
   }
 }
 
-// The attack-surface diagram is generated from the fresh inventory.
-console.log(`\n>>> node diagrams/build_diagram.js`);
-const diag = spawnSync(process.execPath, [path.join(__dirname, "..", "diagrams", "build_diagram.js")], { stdio: "inherit" });
-if (diag.status !== 0) { console.error("step failed: build_diagram.js"); process.exit(diag.status || 1); }
-
-console.log("\nAll steps complete. See p4/reports/ and p4/diagrams/ for the deliverables.");

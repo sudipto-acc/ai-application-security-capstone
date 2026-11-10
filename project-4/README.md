@@ -6,41 +6,6 @@ attacks are deterministic and reproducible. It models the two real host failures
 that make MCP attacks work: eager tool use and no trust boundary between untrusted
 content and instructions.
 
-## Files
-
-```
-p4/
-├── package.json                         npm scripts + deps (@modelcontextprotocol/sdk, zod, express)
-├── mcp_server/
-│   ├── server.js                        the sample vulnerable MCP server (stdio + Streamable HTTP)
-│   └── resources/
-│       ├── company_handbook.md          docs://handbook  (Attack 2 poison target)
-│       ├── onboarding_notes.txt         notes://onboarding
-│       └── credentials.json             FICTIONAL secrets (the exfil objective)
-├── client/
-│   ├── mcp_client.js                    stdio MCP client helper
-│   ├── risk_model.js                    risk rating + one-line abuse scenario per capability
-│   ├── agent.js                         VulnerableHost - the LLM-host stand-in under test
-│   ├── inventory.js                     Deliverable 1 - live capability enumeration
-│   ├── attack1_tool_injection.js        Attack 1 driver
-│   ├── attack2_resource_poisoning.js    Attack 2 driver
-│   ├── attack3_capability_chaining.js   Attack 3 driver
-│   ├── capture_http_evidence.js         raw HTTP capture for the Burp deliverable
-│   ├── build_reports.js                 generates Deliverables 3 and 4
-│   └── run_all.js                       runs the whole assessment end to end
-├── diagrams/
-│   ├── build_diagram.js                 generates the draw.io map from the live inventory
-│   ├── attack_surface_map.drawio        Deliverable 2 - editable in https://app.diagrams.net
-│   └── attack_surface_map.svg           Deliverable 2 - exported image
-└── reports/
-    ├── capability_inventory.md          Deliverable 1 - the inventory table
-    ├── inventory.json                   machine-readable inventory (full JSON schemas)
-    ├── exploitation_walkthrough.md      Deliverable 3 - all 3 attacks
-    ├── hardening_report.md              Deliverable 4 - root cause + fix per vuln
-    ├── evidence/                        raw per-attack JSON + Inspector confirmation
-    └── burp/attack1_execute_command.http  raw HTTP request/response for one attack
-```
-
 ## Prerequisites and setup
 
 **Step 1 - Install Node.js and npm.** The brief's Linux step is
@@ -101,15 +66,6 @@ schemas in [`reports/inventory.json`](reports/inventory.json)).
 
 The target exposes **8 tools, 3 resources, 3 prompts** (3 High, 5 Medium, 6 Low).
 
-## Step 4 - Attack surface map (Deliverable 2)
-
-`diagrams/build_diagram.js` generates a draw.io map from the live inventory: one
-node per tool and resource (prompts included), colour-coded **Red = High, Amber =
-Medium, Green = Low**, with the risk rating and a one-line abuse scenario on every
-High and Medium node. The dashed red edge shows the Attack 3 capability-chaining
-path. Open [`attack_surface_map.drawio`](diagrams/attack_surface_map.drawio) in
-https://draw.io to edit; the exported image is
-[`attack_surface_map.svg`](diagrams/attack_surface_map.svg).
 
 ## Exploitation - three attacks (Deliverable 3)
 

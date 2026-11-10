@@ -12,7 +12,6 @@
     "attack2": "node client/attack2_resource_poisoning.js",
     "attack3": "node client/attack3_capability_chaining.js",
     "burp": "node client/capture_http_evidence.js",
-    "diagram": "node diagrams/build_diagram.js",
     "all": "node client/run_all.js"
   },
   "dependencies": {
